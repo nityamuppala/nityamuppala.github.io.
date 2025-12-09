@@ -1,0 +1,36 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>FHIR Integration Mini‑Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  ../assets/styles.css
+</head>
+<body>
+  <main>
+    <h1>FHIR Integration Mini‑Project</h1>
+    <p><strong>Goal:</strong> Connect a source dataset → transform → publish to a HAPI FHIR server; validate with Postman tests.</p>
+
+    <h2>Stack</h2>
+    <ul>
+      <li>HAPI FHIR (server/client)</li>
+      <li>Postman Collections with tests</li>
+      <li>SQL for lookups/mappings</li>
+    </ul>
+
+    <h2>Artifacts</h2>
+    <ul>
+      <li>Mapping table: Source → FHIR (Patient/Observation)</li>
+      <li>Postman collection JSON (CRUD/search)</li>
+      <li>Screenshots: CapabilityStatement, POST/GET results</li>
+      <li>Troubleshooting notes (validator errors, missing coding systems)</li>
+    </ul>
+
+    <h2>Notes</h2>
+    <p>Publishing source: <code>main</code> / <code>/(root)</code> (GitHub Pages). If using Jekyll, theme set in <code>_config.yml</code>.</p>
+
+    <p>../← Back to home</a></p>
+  </main>
+</body>
+</html>
