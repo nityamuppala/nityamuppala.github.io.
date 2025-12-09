@@ -11,7 +11,7 @@ https://nityamuppala.github.io.
 
 ## How to Use
 1. Enable GitHub Pages in Settings → Pages → Source = main branch.
-2. Your site will be live at `https://<username>.github.io`.
+2. Your site will be live at `https://nityamuppala.github.io`.
 
 ## Projects
 - FHIR Integration Mini-Project
