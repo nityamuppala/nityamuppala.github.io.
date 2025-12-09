@@ -9,11 +9,14 @@ Hosted on **GitHub Pages**. This repo contains my study notes and hands-on proje
 ## Live Site
 https://nityamuppala.github.io.
 
-## GitHub Pages
-Publishing from `main` and `/(root)` in **Settings → Pages**.  
-- Entry file: `index.html` at repo root.
-- Optional: Jekyll theme set in `_config.yml`.
+## How to Use
+1. Enable GitHub Pages in Settings → Pages → Source = main branch.
+2. Your site will be live at `https://<username>.github.io`.
 
-## Custom Domain (optional)
-Configured via **Settings → Pages → Custom domain** + DNS records at registrar.  
-See GitHub Docs: Managing a custom domain for GitHub Pages.  
+## Projects
+- FHIR Integration Mini-Project
+- HL7 v2 → FHIR via Mirth Channel
+
+## Contact
+email: nityamuppala@gmail.com
+
