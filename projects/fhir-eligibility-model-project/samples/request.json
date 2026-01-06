@@ -1,0 +1,21 @@
+{
+  "resourceType": "CoverageEligibilityRequest",
+  "id": "req-456",
+  "status": "active",
+  "purpose": ["benefits", "validation"],
+  "patient": {
+    "reference": "Patient/example-patient"
+  },
+  "created": "2024-05-20T11:00:00Z",
+  "insurer": {
+    "display": "HealthCare Inc. Insurance"
+  },
+  "insurance": [
+    {
+      "focal": true,
+      "coverage": {
+        "reference": "Coverage/policy-123"
+      }
+    }
+  ]
+}
