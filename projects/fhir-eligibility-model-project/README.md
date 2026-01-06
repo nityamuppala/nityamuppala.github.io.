@@ -36,6 +36,67 @@ erDiagram
     }
 
 ```
+This is a more comprehensive diagram including other resources involved in the process.
+
+```mermaid
+erDiagram
+    %% Core Entities and Relationships
+    PATIENT ||--o{ COVERAGE : "is beneficiary of"
+    ORGANIZATION ||--o{ COVERAGE : "is payor for"
+    PATIENT ||--o{ COVERAGE_ELIGIBILITY_REQUEST : "is subject of"
+    ORGANIZATION ||--o{ COVERAGE_ELIGIBILITY_REQUEST : "is recipient (insurer) of"
+    
+    COVERAGE ||--o{ COVERAGE_ELIGIBILITY_REQUEST : "is being verified"
+    COVERAGE_ELIGIBILITY_REQUEST ||--o| COVERAGE_ELIGIBILITY_RESPONSE : "expects/receives"
+    
+    %% Entity Definitions with Summary Fields
+    COVERAGE {
+        string id PK "Logical ID"
+        identifier identifier "Business ID (Policy/Group)"
+        code status "active | cancelled | draft"
+        CodeableConcept type "HMO, PPO, etc."
+        Reference subscriber "Link to Patient/RelatedPerson"
+        string subscriberId "Member ID on card"
+        Reference payor "Link to Organization"
+        Period period "Coverage start/end"
+        integer order "Coordination of Benefits priority"
+    }
+
+    COVERAGE_ELIGIBILITY_REQUEST {
+        string id PK
+        identifier identifier "Inquiry ID"
+        code status "active | cancelled | draft"
+        code purpose "auth-requirements | benefits | discovery | validation"
+        Reference patient FK "Link to Patient"
+        dateTime created "Request timestamp"
+        Reference provider "Requesting Practitioner/Org"
+        Reference insurer FK "Target Payor"
+        date serviced "Planned date of service"
+        boolean insurance_focal "Is this the primary coverage?"
+    }
+
+    COVERAGE_ELIGIBILITY_RESPONSE {
+        string id PK
+        identifier identifier "Response ID"
+        code status "active | cancelled | draft"
+        code outcome "queued | complete | error | partial"
+        string disposition "Human-readable result message"
+        dateTime created "Response timestamp"
+        Reference request FK "Link back to Request"
+        Reference insurer "The responding Payor"
+        string preAuthRef "Auth number (if requested)"
+    }
+
+    %% Showing the complex Benefit Item breakdown
+    COVERAGE_ELIGIBILITY_RESPONSE ||--o{ RESPONSE_ITEM : "contains"
+    RESPONSE_ITEM {
+        CodeableConcept category "Dental, Vision, etc."
+        CodeableConcept productOrService "CPT/HCPCS code"
+        boolean excluded "Is service specifically excluded?"
+        string benefit_summary "Deductible, Copay, etc."
+    
+    }
+```
 
 ## FHIR Resources Used
 
