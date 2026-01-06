@@ -47,9 +47,9 @@ erDiagram
 
 You can find valid FHIR JSON samples for these resources in the `/samples` folder:
 
-* [Coverage Sample](.samples/coverage.json)
-* [Eligibility Request](.samples/request.json)
-* [Eligibility Response](.samples/response.json)
+* [Coverage Sample](./samples/coverage.json)
+* [Eligibility Request](./samples/request.json)
+* [Eligibility Response](./samples/response.json)
 
 ## Key Learning Outcomes
 
