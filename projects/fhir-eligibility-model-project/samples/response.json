@@ -1,0 +1,34 @@
+{
+  "resourceType": "CoverageEligibilityResponse",
+  "id": "res-789",
+  "status": "active",
+  "outcome": "complete",
+  "disposition": "Policy is active. Benefits include a $20 copay for office visits.",
+  "created": "2024-05-20T11:00:05Z",
+  "request": {
+    "reference": "CoverageEligibilityRequest/req-456"
+  },
+  "insurer": {
+    "display": "HealthCare Inc. Insurance"
+  },
+  "insurance": [
+    {
+      "coverage": {
+        "reference": "Coverage/policy-123"
+      },
+      "item": [
+        {
+          "category": {
+            "coding": [{ "code": "30", "display": "Health Benefit Plan Coverage" }]
+          },
+          "benefit": [
+            {
+              "type": { "coding": [{ "code": "copay" }] },
+              "allowedString": "$20.00"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
