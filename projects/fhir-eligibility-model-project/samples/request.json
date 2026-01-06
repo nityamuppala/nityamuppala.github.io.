@@ -1,6 +1,10 @@
 {
   "resourceType": "CoverageEligibilityRequest",
   "id": "req-456",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Eligibility request for Jane Doe to HealthCare Inc. Insurance regarding benefit coverage for planned services.</p></div>"
+  },
   "status": "active",
   "purpose": ["benefits", "validation"],
   "patient": {
