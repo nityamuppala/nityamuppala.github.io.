@@ -84,7 +84,7 @@ You can find valid FHIR JSON samples for these resources in the `/samples` folde
 ## Validation & Testing
 
 To ensure the technical accuracy and interoperability of this data model, the following validation layers were implemented:
-1. Schema Validation (HL7 FHIR R4)
+**1. Schema Validation (HL7 FHIR R4)**
 
 The JSON samples were validated using the Inferno FHIR Resource Validator.
 
@@ -98,7 +98,7 @@ The JSON samples were validated using the Inferno FHIR Resource Validator.
 
         Cardinality: Verified that mandatory fields (such as patient and purpose in the Response) are present to meet the 1..1 requirement.
 
-2. Referential Integrity Check
+**2. Referential Integrity Check**
 
 I manually verified the "Transaction Chain" to ensure the resources are correctly linked via Logical IDs:
 
@@ -108,7 +108,7 @@ I manually verified the "Transaction Chain" to ensure the resources are correctl
 
    * CoverageEligibilityResponse.insurance.coverage → points to Coverage/policy-123
 
-3. Terminology & Binding Verification
+**3. Terminology & Binding Verification**
 
 Each CodeableConcept was checked against the official HL7 Terminology (UTG):
 
