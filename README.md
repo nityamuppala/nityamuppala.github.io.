@@ -14,6 +14,7 @@ https://nityamuppala.github.io.
 2. Your site will be live at `https://nityamuppala.github.io`.
 
 ## Projects
+- FHIR Eligibility Model
 - FHIR Integration Mini-Project
 - HL7 v2 → FHIR via Mirth Channel
 
