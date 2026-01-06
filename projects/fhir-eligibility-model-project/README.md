@@ -128,8 +128,30 @@ If you would like to test the validity of the data in this repository
 
     Click Validate.
 
-## Key Learning Outcomes
+## Architectural Design Decisions
 
-* **Interoperability:** Mapping complex healthcare workflows to the international FHIR R4 standard.
-* **Cardinality:** Managing 1:N relationships between a single policy (`Coverage`) and multiple verification attempts (`Requests`).
-* **Data Modeling:** Identifying "Summary" fields (Σ) essential for lightweight, performant API transactions.
+    Standardized Interoperability: I mapped complex, real-world healthcare insurance workflows to the HL7 FHIR R4 standard. This ensures that the data model is not a "silo" but is ready for exchange with any FHIR-compliant Electronic Health Record (EHR) or Payer system.
+
+    Relationship Cardinality: I designed the model to handle 1:N (One-to-Many) relationships. A single Coverage resource (the persistent insurance policy) can be associated with an infinite history of EligibilityRequests. This supports a longitudinal view of a patient’s verification history.
+
+    Performance-First Modeling (Σ): I prioritized the identification of Summary Fields (indicated by the Σ in FHIR documentation). By focusing on these essential elements for the initial transaction, the API remains performant and lightweight, ensuring that front-desk staff get eligibility answers in milliseconds rather than seconds.
+
+## 🛠️ Lessons Learned & Technical Challenges
+
+Building a production-ready FHIR model involved navigating the strict requirements of healthcare data interoperability. Below are the key technical challenges encountered and resolved during the development process:
+
+### 1. Versioning Discrepancies (FHIR R4 vs. R5)
+* **The Challenge:** Initial validation errors occurred due to field name changes between FHIR versions (e.g., `payor` in R4 vs. `insurer` in R5).
+* **The Lesson:** I learned the importance of pinning a project to a specific FHIR version (R4 4.0.1) to ensure compatibility with existing legacy systems while maintaining referential integrity.
+
+### 2. Strict Terminology Binding
+* **The Challenge:** The FHIR validator flagged "Wrong Display Name" errors for standard codes (e.g., using "Copayment" instead of the official "Copayment per service").
+* **The Lesson:** Healthcare data requires 100% precision. I learned to consult the official HL7 Terminology (UTG) to ensure that `display` strings match the CodeSystem's canonical definition exactly, preventing "silent failures" in automated billing systems.
+
+### 3. Resource Cardinality & Redundancy
+* **The Challenge:** I initially omitted the `patient` and `purpose` fields in the Response, assuming they were implied by the link to the Request.
+* **The Lesson:** FHIR rules often require "safe redundancy." I learned that certain fields are mandatory ($1..1$) in the Response to ensure the resource remains meaningful even if it is separated from its parent Request during data exchange.
+
+### 4. Narrative Requirements (dom-6)
+* **The Challenge:** Encountered Best Practice warnings (dom-6) regarding missing narrative text.
+* **The Lesson:** Implementing the `text` (Narrative) element is non-negotiable for "robust management." It ensures that clinical data remains human-readable in emergency scenarios where a specialized FHIR viewer might not be available.
