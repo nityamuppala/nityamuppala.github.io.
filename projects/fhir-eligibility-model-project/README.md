@@ -88,11 +88,11 @@ To ensure the technical accuracy and interoperability of this data model, the fo
 
 The JSON samples were validated using the Inferno FHIR Resource Validator.
 
-    Version: FHIR R4 (4.0.1)
+   * Version: FHIR R4 (4.0.1)
 
-    Status: 100% Passing (No Errors)
+   * Status: 100% Passing (No Errors)
 
-    Verified Constraints:
+   * Verified Constraints:
 
         dom-6: Confirmed all resources contain a human-readable Narrative (text element).
 
@@ -102,41 +102,37 @@ The JSON samples were validated using the Inferno FHIR Resource Validator.
 
 I manually verified the "Transaction Chain" to ensure the resources are correctly linked via Logical IDs:
 
-    CoverageEligibilityRequest.insurance.coverage → points to Coverage/policy-123
+   * CoverageEligibilityRequest.insurance.coverage → points to Coverage/policy-123
 
-    CoverageEligibilityResponse.request → points to CoverageEligibilityRequest/req-456
+   * CoverageEligibilityResponse.request → points to CoverageEligibilityRequest/req-456
 
-    CoverageEligibilityResponse.insurance.coverage → points to Coverage/policy-123
+   * CoverageEligibilityResponse.insurance.coverage → points to Coverage/policy-123
 
 3. Terminology & Binding Verification
 
 Each CodeableConcept was checked against the official HL7 Terminology (UTG):
 
-    Benefit Category: Verified code 30 against http://terminology.hl7.org/CodeSystem/ex-benefitcategory.
-
-    Benefit Type: Verified code copay against http://terminology.hl7.org/CodeSystem/benefit-type and updated the display name to the canonical "Copayment per service" to satisfy strict terminology binding.
+   * Benefit Category: Verified code 30 against http://terminology.hl7.org/CodeSystem/ex-benefitcategory.
+   * Benefit Type: Verified code copay against http://terminology.hl7.org/CodeSystem/benefit-type and updated the display name to the canonical "Copayment per service" to satisfy strict terminology binding.
 
 How to Verify These Samples Yourself
 
 If you would like to test the validity of the data in this repository
 
-    Copy the contents of samples/response.json.
-
-    Navigate to the HL7 FHIR Validator.
-
-    Paste the JSON and ensure the "Validation Profile" is set to HL7 FHIR Release 4.
-
-    Click Validate.
+   * Copy the contents of samples/response.json.
+   * Navigate to the HL7 FHIR Validator.
+   * Paste the JSON and ensure the "Validation Profile" is set to HL7 FHIR Release 4.
+   * Click Validate.
 
 ## Architectural Design Decisions
 
-    Standardized Interoperability: I mapped complex, real-world healthcare insurance workflows to the HL7 FHIR R4 standard. This ensures that the data model is not a "silo" but is ready for exchange with any FHIR-compliant Electronic Health Record (EHR) or Payer system.
+   * Standardized Interoperability: I mapped complex, real-world healthcare insurance workflows to the HL7 FHIR R4 standard. This ensures that the data model is not a "silo" but is ready for exchange with any FHIR-compliant Electronic Health Record (EHR) or Payer system.
 
-    Relationship Cardinality: I designed the model to handle 1:N (One-to-Many) relationships. A single Coverage resource (the persistent insurance policy) can be associated with an infinite history of EligibilityRequests. This supports a longitudinal view of a patient’s verification history.
+   * Relationship Cardinality: I designed the model to handle 1:N (One-to-Many) relationships. A single Coverage resource (the persistent insurance policy) can be associated with an infinite history of EligibilityRequests. This supports a longitudinal view of a patient’s verification history.
 
-    Performance-First Modeling (Σ): I prioritized the identification of Summary Fields (indicated by the Σ in FHIR documentation). By focusing on these essential elements for the initial transaction, the API remains performant and lightweight, ensuring that front-desk staff get eligibility answers in milliseconds rather than seconds.
+   * Performance-First Modeling (Σ): I prioritized the identification of Summary Fields (indicated by the Σ in FHIR documentation). By focusing on these essential elements for the initial transaction, the API remains performant and lightweight, ensuring that front-desk staff get eligibility answers in milliseconds rather than seconds.
 
-## 🛠️ Lessons Learned & Technical Challenges
+## Lessons Learned & Technical Challenges
 
 Building a production-ready FHIR model involved navigating the strict requirements of healthcare data interoperability. Below are the key technical challenges encountered and resolved during the development process:
 
