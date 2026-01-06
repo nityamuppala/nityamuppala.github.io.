@@ -115,10 +115,9 @@ Each CodeableConcept was checked against the official HL7 Terminology (UTG):
    * Benefit Category: Verified code 30 against http://terminology.hl7.org/CodeSystem/ex-benefitcategory.
    * Benefit Type: Verified code copay against http://terminology.hl7.org/CodeSystem/benefit-type and updated the display name to the canonical "Copayment per service" to satisfy strict terminology binding.
 
-How to Verify These Samples Yourself
+**How to Verify These Samples Yourself**
 
 If you would like to test the validity of the data in this repository
-
    * Copy the contents of samples/response.json.
    * Navigate to the HL7 FHIR Validator.
    * Paste the JSON and ensure the "Validation Profile" is set to HL7 FHIR Release 4.
