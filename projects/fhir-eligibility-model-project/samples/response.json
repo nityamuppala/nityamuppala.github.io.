@@ -1,6 +1,10 @@
 {
   "resourceType": "CoverageEligibilityResponse",
   "id": "res-789",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Eligibility response from HealthCare Inc. Insurance: Policy is active. Benefits include a $20 copay for office visits.</p></div>"
+  },
   "status": "active",
   "outcome": "complete",
   "disposition": "Policy is active. Benefits include a $20 copay for office visits.",
