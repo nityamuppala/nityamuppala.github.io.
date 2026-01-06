@@ -3,13 +3,16 @@
   "id": "res-789",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Eligibility response from HealthCare Inc. Insurance: Policy is active. Benefits include a $20 copay for office visits.</p></div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Policy is active. $20.00 office visit copay confirmed.</div>"
   },
   "status": "active",
-  "purpose": ["benefits","validation"]
-  "patient":{
+  "purpose": [
+    "validation",
+    "benefits"
+  ],
+  "patient": {
     "reference": "Patient/example-patient"
-  }
+  },
   "created": "2024-05-20T11:00:05Z",
   "request": {
     "reference": "CoverageEligibilityRequest/req-456"
@@ -24,14 +27,29 @@
       "coverage": {
         "reference": "Coverage/policy-123"
       },
+      "inforce": true,
       "item": [
         {
           "category": {
-            "coding": [{ "code": "30", "display": "Health Benefit Plan Coverage" }]
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/ex-benefitcategory",
+                "code": "30",
+                "display": "Health Benefit Plan Coverage"
+              }
+            ]
           },
           "benefit": [
             {
-              "type": { "coding": [{ "code": "copay" }] },
+              "type": {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/benefit-type",
+                    "code": "copay",
+                    "display": "Copayment per service"
+                  }
+                ]
+              },
               "allowedString": "$20.00"
             }
           ]
