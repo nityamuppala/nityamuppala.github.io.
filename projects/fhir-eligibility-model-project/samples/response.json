@@ -6,12 +6,16 @@
     "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Eligibility response from HealthCare Inc. Insurance: Policy is active. Benefits include a $20 copay for office visits.</p></div>"
   },
   "status": "active",
-  "outcome": "complete",
-  "disposition": "Policy is active. Benefits include a $20 copay for office visits.",
+  "purpose": ["benefits","validation"]
+  "patient":{
+    "reference": "Patient/example-patient"
+  }
   "created": "2024-05-20T11:00:05Z",
   "request": {
     "reference": "CoverageEligibilityRequest/req-456"
   },
+  "outcome": "complete",
+  "disposition": "Policy is active. Benefits include a $20 copay for office visits.",
   "insurer": {
     "display": "HealthCare Inc. Insurance"
   },
