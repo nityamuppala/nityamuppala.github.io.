@@ -4,7 +4,7 @@
 
 In healthcare, verifying if a patient has active insurance and what their benefits cover (deductibles, copays) is a critical step before care is provided. This project models the "Transaction Triple" using the **HL7® FHIR® R4** standard to facilitate real-time eligibility checks between a Provider (EHR) and an Insurer (Payer).
 
-The following Entity Relationship Diagram (ERD) visualizes the logical flow of an insurance eligibility check. It maps how a patient’s static coverage information transitions into a dynamic request-and-response transaction. This model ensures that all participants—Patient, Provider, and Insurer—are synchronized through linked FHIR resources.
+The following Entity Relationship Diagram (ERD) visualizes the logical flow of an insurance eligibility check. It maps how a patient’s static coverage information transitions into a dynamic request-and-response transaction. This model ensures that all participants (Patient, Provider, and Insurer) are synchronized through linked FHIR resources.
 
 ## Data Architecture (ERD)
 
