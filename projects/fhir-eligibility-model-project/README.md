@@ -87,11 +87,16 @@ To ensure the technical accuracy and interoperability of this data model, the fo
 1. Schema Validation (HL7 FHIR R4)
 
 The JSON samples were validated using the Inferno FHIR Resource Validator.
-Version: FHIR R4 (4.0.1)
-Status: 100% Passing (No Errors)
-Verified Constraints:
-    dom-6: Confirmed all resources contain a human-readable Narrative (text element).
-    Cardinality: Verified that mandatory fields (such as patient and purpose in the Response) are present to meet the 1..1 requirement.
+
+    Version: FHIR R4 (4.0.1)
+
+    Status: 100% Passing (No Errors)
+
+    Verified Constraints:
+
+        dom-6: Confirmed all resources contain a human-readable Narrative (text element).
+
+        Cardinality: Verified that mandatory fields (such as patient and purpose in the Response) are present to meet the 1..1 requirement.
 
 2. Referential Integrity Check
 
